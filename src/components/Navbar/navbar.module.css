@@ -13,3 +13,12 @@
   align-items: center;
   gap: 20px;
 }
+.logoutBtn {
+  font-size: 22;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #53c28b;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
