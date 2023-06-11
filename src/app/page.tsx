@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.homeContainer}>
       <div className={styles.homecontent}>
         <h1 className={styles.title}>
-          Better design for your digital products.
+          Better design for your digital products
         </h1>
         <p className={styles.desc}>
           Turning your Idea into Reality. We bring together the teams from the
