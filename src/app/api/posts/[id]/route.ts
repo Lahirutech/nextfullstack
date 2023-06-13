@@ -1,11 +1,9 @@
-import { NextApiRequest } from 'next';
 import connect from '@/utils/db';
 import Post from '@/model/Post';
-import { NextResponse } from 'next/server';
-import { json } from 'stream/consumers';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (
-  request: NextApiRequest,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   try {
@@ -19,7 +17,7 @@ export const GET = async (
 };
 
 export const POST = async (
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   try {
