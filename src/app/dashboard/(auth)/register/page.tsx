@@ -28,7 +28,6 @@ const Register = () => {
         router.push('/dashboard/login?success=Account has been created');
       if (res.status !== 201) {
         const body = await res.json();
-        console.log('body', body);
         setError(body.message);
       }
     } catch (err: any) {

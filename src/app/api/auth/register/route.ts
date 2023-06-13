@@ -16,7 +16,6 @@ export const POST = async (request: Request) => {
   const user = await User.find({ email });
 
   if (user.length > 0) {
-    console.log('user already exist');
     return new NextResponse(
       JSON.stringify({ message: 'User already exists' }),
       {

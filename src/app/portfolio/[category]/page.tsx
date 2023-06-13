@@ -11,10 +11,9 @@ interface MyObject {
   websites: { id: number; title: string; desc: string; image: string }[];
 }
 
-const getData = (cat: string) => {
+const getData = (category: string) => {
   const data: { id: number; title: string; desc: string; image: string }[] =
-    items[cat as keyof MyObject];
-  console.log('data', data);
+    items[category as keyof MyObject];
 
   if (data) {
     return data;
