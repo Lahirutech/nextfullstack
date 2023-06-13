@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { PostsType } from '../page';
 
 const getSinglePost = async (id: string) => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -14,6 +14,14 @@ const getSinglePost = async (id: string) => {
   return res.json();
 };
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const post = await getSinglePost(params.id);
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+}
+
 const BlogPost = async ({ params }: { params: { id: string } }) => {
   const data: PostsType = await getSinglePost(params.id);
   return (
@@ -21,7 +29,7 @@ const BlogPost = async ({ params }: { params: { id: string } }) => {
       <div className={styles.top}>
         <div className={styles.info}>
           <h1 className={styles.title}>{data.title}</h1>
-          <p className={styles.desc}>{data.body}</p>
+          <p className={styles.desc}>{data.content}</p>
           <div className={styles.author}>
             <Image
               src={'/assets/img/prof.webp'}
@@ -35,7 +43,7 @@ const BlogPost = async ({ params }: { params: { id: string } }) => {
         </div>
         <div className={styles.imageContainer}>
           <Image
-            src={'/assets/img/apps.jpg'}
+            src={data.img}
             alt=''
             fill={true}
             className={styles.image}

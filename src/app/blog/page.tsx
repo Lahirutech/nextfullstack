@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './blog.module.css';
 
 async function getData() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+  const res = await fetch('http://localhost:3000/api/posts', {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -15,10 +15,13 @@ async function getData() {
 }
 
 export type PostsType = {
+  _id: string;
   id: number;
   userId: number;
+  img: string;
   title: string;
-  body: string;
+  desc: string;
+  content: string;
 };
 
 const Blog = async () => {
@@ -27,13 +30,13 @@ const Blog = async () => {
     <div className={styles.mainContainer}>
       {data.map((item: PostsType) => (
         <Link
-          href={`/blog/${item.id}`}
+          href={`/blog/${item._id}`}
           className={styles.container}
           key={item.id}
         >
           <div className={styles.imageContainer}>
             <Image
-              src={'/assets/img/apps.jpg'}
+              src={item.img}
               alt=''
               width={400}
               height={250}
@@ -42,7 +45,7 @@ const Blog = async () => {
           </div>
           <div className={styles.content}>
             <h1 className={styles.title}>{item.title}</h1>
-            <p className={styles.desc}>{item.body}</p>
+            <p className={styles.desc}>{item.content}</p>
           </div>
         </Link>
       ))}
