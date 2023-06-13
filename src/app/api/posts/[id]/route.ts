@@ -16,7 +16,7 @@ export const GET = async (
   }
 };
 
-export const POST = async (
+export const DELETE = async (
   request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
