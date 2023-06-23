@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <div>©2023 Lamamia. All rights reserved.</div>
+      <div>©2023 Lanka Rathnayaka. All rights reserved.</div>
       <div className={styles.socialIcons}>
         <Link href=''>
           <Image
